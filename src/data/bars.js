@@ -7,7 +7,7 @@ export const bars = [
     type: "Lounge",
     rating: 4.5,
     happyHours: [
-      { days: "Mon–Sunday", start: "12:00 PM", end: "8:00 PM" },
+      { days: "Mon–Sunday", start: "12:00 PM", end: "11:00 PM" },
     ],
     deals: "₹199 beer, ₹299 cocktails, 2-for-1 tequila",
     food: "Tapas, burgers",

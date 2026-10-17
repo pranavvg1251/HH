@@ -1,23 +1,37 @@
-name: Deploy to InfinityFree via FTP
+name: Build and Deploy to InfinityFree via FTP
 
 on:
   push:
     branches:
-      - main  # Change to "master" if your default branch uses that name
+      - main  # Change to master if your default branch is master
 
 jobs:
-  web-deploy:
-    name: 🎉 Deploying Site
+  build-and-deploy:
+    name: 🏗️ Build & 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
 
-    - name: 📂 Sync files to InfinityFree
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20  # Matches modern Node.js versions
+        cache: 'npm'
+
+    - name: 📦 Install Dependencies
+      run: npm install
+
+    - name: 🔨 Build Production Site
+      run: npm run build
+
+    - name: 📂 Sync Compiled Files to InfinityFree
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ftpupload.net
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./
-        server-dir: /htdocs/  # Uploads directly into InfinityFree's public web folder
+        # Highlights the build folder (use './build' if using Create React App)
+        local-dir: ./dist/  
+        server-dir: /htdocs/
+        dangerously-clean-slot: true # Clears old raw src/ files from htdocs

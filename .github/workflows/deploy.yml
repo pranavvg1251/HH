@@ -31,7 +31,6 @@ jobs:
         server: ftpupload.net
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        # Highlights the build folder (use './build' if using Create React App)
-        local-dir: ./dist/  
-        server-dir: /htdocs/
-        dangerously-clean-slot: true # Clears old raw src/ files from htdocs
+        local-dir: ./dist/  # Keep this as ./dist/ or ./build/ depending on your app
+        server-dir: htdocs/ # Removed the leading slash to make it relative
+

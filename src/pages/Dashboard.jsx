@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import "../styles/Dashboard.css";
 
 const API_BASE = (
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000"
+  import.meta.env.VITE_API_BASE_URL || "https://hhbackend-e2oz.onrender.com"
 ).replace(/\/$/, "");
 
 export default function Dashboard() {

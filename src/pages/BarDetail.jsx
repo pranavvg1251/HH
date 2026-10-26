@@ -10,6 +10,7 @@ export default function BarDetail() {
   const [bar, setBar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const API_BASE_URL = "https://hhbackend-e2oz.onrender.com";
 
   useEffect(() => {
     const controller = new AbortController();
@@ -21,7 +22,7 @@ export default function BarDetail() {
 
       try {
         const response = await fetch(
-          `http://localhost:3000/api/bars/${id}`,
+          `${API_BASE_URL}/api/bars/${id}`,
           { signal: controller.signal }
         );
 

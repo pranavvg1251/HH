@@ -15,6 +15,8 @@ export default function Home() {
   const [time, setTime] = useState("");
   const [hhOnly, setHhOnly] = useState(false);
   const [appliedSearch, setAppliedSearch] = useState("");
+  const API_BASE_URL = "https://hhbackend-e2oz.onrender.com";
+  
 
   const { isHHNow } = useHH();
 
@@ -27,7 +29,7 @@ export default function Home() {
 
       try {
         const response = await fetch(
-          "http://localhost:3000/api/bars",
+          `${API_BASE_URL}/api/bars`,
           { signal: controller.signal }
         );
 

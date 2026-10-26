@@ -6,6 +6,7 @@ export default function NeighborhoodNav() {
   const [neighborhoods, setNeighborhoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const API_BASE_URL = "https://hhbackend-e2oz.onrender.com";
 
   useEffect(() => {
     const controller = new AbortController();
@@ -13,7 +14,7 @@ export default function NeighborhoodNav() {
     async function loadNeighborhoods() {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/neighborhoods",
+          `${API_BASE_URL}/api/neighborhoods`,
           { signal: controller.signal }
         );
 
